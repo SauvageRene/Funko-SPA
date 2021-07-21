@@ -4,7 +4,7 @@ class CreateFunkos < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :image
       t.string :series
-
+      t.references :collection
       t.timestamps
     end
   end

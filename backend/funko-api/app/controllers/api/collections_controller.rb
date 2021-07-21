@@ -1,11 +1,11 @@
-class CollectionsController < ApplicationController
+class Api::CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :update, :destroy]
 
   # GET /collections
   def index
-    @collections = Collection.all
+    collections = Collection.all
 
-    render json: @collections
+    render json: collections, only:[:name, :funkos], include:{funkos:{except:[:created_at, :updated_at]}}
   end
 
   # GET /collections/1

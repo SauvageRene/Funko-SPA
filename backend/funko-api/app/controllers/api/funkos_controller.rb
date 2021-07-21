@@ -1,11 +1,11 @@
-class FunkosController < ApplicationController
+class Api::FunkosController < ApplicationController
   before_action :set_funko, only: [:show, :update, :destroy]
 
   # GET /funkos
   def index
-    funkos = Funko.all
+    @funkos = Funko.all
 
-    render json: funkos
+    render json: @funkos
   end
 
   # GET /funkos/1

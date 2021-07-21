@@ -1,0 +1,3 @@
+class Funko < ApplicationRecord
+    
+end

@@ -30,7 +30,6 @@ class Funko {
             <h4>${this.name}</h4>
             <img src="${this.image}"/>
             <strong><p>${this.series}</p></strong>
-            < 
         </div>`
         return this.element
     }

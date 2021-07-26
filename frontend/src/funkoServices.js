@@ -1,19 +1,17 @@
 // Make the funko calls and services 
 
 class CallFunko{
-    constructor(api){
+    constructor({api}){
         this.api = api
     }
     // My Index Route 
     getFunkos(){
-        fetch(`${this.api}/contacts`)
+        fetch(`${this.api}/funkos`)
         .then(resp => resp.json)
         .then(funkos => {
-            for (const funko of funkos){
-                const f = new Funko(funko)
-                f.renderToDom()
-            }
-        })
+            funkos.forEach(funko => {
+            const funkoName = new Funko(funko)
+            funkoName.renderToDom
+        })})
     }
-   
 }

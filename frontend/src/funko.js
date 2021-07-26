@@ -1,7 +1,7 @@
 class Funko {
     // remember all objects
     static all = [];
-    static funkoContainer = document.getElementsByid('funkos-container');
+    static funkoContainer = document.getElementsById('funkos-container');
 
     constructor({name, image, series}){
         this.name = name
@@ -26,6 +26,6 @@ class Funko {
     }
     // append our element to the contact-container
     renderToDom(){
-        Funko.funkoContainer.appendchild(funkoHTML())
+        Funko.funkoContainer.appendchild(this.funkoHTML())
     }
 };

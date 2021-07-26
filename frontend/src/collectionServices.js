@@ -10,7 +10,9 @@ class CollectionServices{
     static getCollection(){
         fetch("http://localhost:3000/api/collections")
         .then(resp => resp.json)
-        .then(collection =>  console.log(collection))}
+        .then(data =>  Collection.renderCollection(data))
+        .catche(error => console.warn(error))
+    }
     
         //     funkos.forEach(name => {
         //     const collection = new CallCollection(name)

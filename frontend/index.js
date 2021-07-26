@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    CollectionServices.getCollection()
+    Collection.getCollection()
  })
 
 

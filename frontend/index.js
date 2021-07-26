@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     Collection.getCollection()
+    Funko.getFunkos()
  })
 
 

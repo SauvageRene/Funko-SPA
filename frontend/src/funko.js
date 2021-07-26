@@ -2,6 +2,7 @@ class Funko {
     // remember all objects
     static all = [];
     static funkoContainer = document.getElementById('funkos-container');
+    static funkoForm = document.querySelector('#form-container')
 
     constructor({name, image, series}){
         this.name = name
@@ -27,13 +28,25 @@ class Funko {
         this.element.innerHTML += `
         <div>
             <h4>${this.name}</h4>
-            <src=${this.image}>
-            <p>${this.series}</p>
+            <img src="${this.image}"/>
+            <strong><p>${this.series}</p></strong>
+            < 
         </div>`
         return this.element
     }
     // append our element to the contact-container
     renderToDom(){
         Funko.funkoContainer.append(this.funkoHTML())
+    }
+
+    // Creating new funkos
+    static renderForm(){
+        Funko.funkoForm.innerHTML += 
+        `<form id="new-funko-form">
+            Name:<input type="text" id="name">
+            Image: <input img src= id="image">
+            Series: <input type="text" id="series">
+            <input type="submit" id="create">
+        </form>`
     }
 };

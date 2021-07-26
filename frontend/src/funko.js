@@ -3,7 +3,7 @@ class Funko {
     static all = [];
     static funkoContainer = document.getElementsByid('funkos-container');
 
-    constructor(name, image, series){
+    constructor({name, image, series}){
         this.name = name
         this.image = image
         this.series = series

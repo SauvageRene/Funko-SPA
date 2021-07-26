@@ -10,7 +10,7 @@ class CallFunko{
         .then(resp => resp.json)
         .then(funkos => {
             for (const funko of funkos){
-                
+                const f = new Funko(funko)
             }
         })
     }

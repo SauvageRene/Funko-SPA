@@ -11,6 +11,7 @@ class CallFunko{
         .then(funkos => {
             for (const funko of funkos){
                 const f = new Funko(funko)
+                f.renderToDom()
             }
         })
     }

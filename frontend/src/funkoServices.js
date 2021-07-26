@@ -1,12 +1,13 @@
-// Make the funko calls and services 
+// Make the colelction calls and services 
 
 class CallFunko{
-    constructor({api}){
-        this.api = api
+    constructor({name}){
+        this.name = name
+        CallFunko.call.push(this)
     }
     // My Index Route 
-    getFunkos(){
-        fetch(`${this.api}/funkos`)
+    static getFunkos(){
+        fetch(`${this.name}/collections`)
         .then(resp => resp.json)
         .then(funkos => {
             funkos.forEach(funko => {

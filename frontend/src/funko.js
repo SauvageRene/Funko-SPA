@@ -48,4 +48,27 @@ class Funko {
             <input type="submit" id="create">
         </form>`
     }
+
+    createFunko(){
+        const funko = {
+            name: document.getElementById('name').value,
+            image: document.getElementById('image').value,
+            series: document.getElementById('series').value,
+            collection_id: 1 
+        }
+        const configFunko = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+            body: JSON.stringify(funko)
+        }
+        fetch('http://localhost:3000/api/collections/1/funkos', configFunko)
+        .then(resp => resp.json())
+        .then(funko => {
+            const f = new Funko(funko)
+            f.renderToDom()
+        })
+    }
 };

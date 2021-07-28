@@ -4,11 +4,12 @@ class Funko {
     static funkoContainer = document.getElementById('funkos-container');
     static funkoForm = document.querySelector('#form-container')
 
-    constructor({name, image, series}){
+    constructor({name, image, series, wishlist}){
         this.name = name
         this.image = image
         this.series = series
-        this.element = document.createElement('li')
+        this.wishlist = wishlist 
+        // this.element = document.createElement('li')
         // this.element = dataset.id = this.id
         // this.element.id = `funko-${this.id}`
 
@@ -25,17 +26,20 @@ class Funko {
         })})
     }
     funkoHTML(){
-        this.element.innerHTML += `
+        // this.element.innerHTML 
+        return(`
         <div>
             <h4>${this.name}</h4>
             <img src="${this.image}"/>
             <strong><p>${this.series}</p></strong>
-        </div>`
-        return this.element
+            <button id="wishlist">Add to Wishlist</button>
+        </div>`)
+        // return this.element
     }
     // append our element to the contact-container
+
     renderToDom(){
-        Funko.funkoContainer.append(this.funkoHTML())
+        Funko.funkoContainer.innerHTML += this.funkoHTML() 
     }
 
     // Creating new funkos
@@ -54,13 +58,13 @@ class Funko {
             name: document.getElementById('name').value,
             image: document.getElementById('image').value,
             series: document.getElementById('series').value,
+            wishlist: false,
             collection_id: 1 
         }
         const configFunko = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-
             },
             body: JSON.stringify(funko)
         }

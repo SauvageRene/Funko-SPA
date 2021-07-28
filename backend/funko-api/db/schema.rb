@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_190311) do
     t.string "name"
     t.string "image"
     t.string "series"
+    t.boolean "wishlist", default: false
     t.integer "collection_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

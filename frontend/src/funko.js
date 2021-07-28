@@ -42,9 +42,9 @@ class Funko {
     static renderForm(){
         Funko.funkoForm.innerHTML += 
         `<form id="new-funko-form">
-            Name:<input type="text" id="name">
-            Image: <input img src= id="image">
-            Series: <input type="text" id="series">
+            Name:<input type="text" id="name" placeholder="Name">
+            Image: <input img src= id="image" placeholder="URL">
+            Series: <input type="text" id="series" placeholder="Series">
             <input type="submit" id="create">
         </form>`
     }

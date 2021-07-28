@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     Collection.getCollection()
     Funko.getFunkos()
+    Funko.renderForm()
  })
 
 

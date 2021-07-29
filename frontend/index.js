@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     Funko.renderForm()
 
  })
+Funko.funkoForm.addEventListener('submit', handleSubmit)
 
-function handlesubmit(){
+function handleSubmit(){
     event.preventDefault()
     Funko.createFunko()
     event.target.reset()

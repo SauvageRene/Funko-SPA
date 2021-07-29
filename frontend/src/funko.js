@@ -53,7 +53,7 @@ class Funko {
         </form>`
     }
 
-    createFunko(){
+    static createFunko(){
         const funko = {
             name: document.getElementById('name').value,
             image: document.getElementById('image').value,
@@ -61,6 +61,7 @@ class Funko {
             wishlist: false,
             collection_id: 1 
         }
+        debugger
         const configFunko = {
             method: 'POST',
             headers: {

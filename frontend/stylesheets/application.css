@@ -16,3 +16,13 @@ body {
     height: 100px;
     vertical-align: left;
 }
+
+#delete {
+    background-color: rgb(248, 9, 81);
+    font-family: sans-serif;
+}
+
+#wishlist {
+    background-color: rgb(11, 211, 238);
+    font-family: sans-serif;
+}

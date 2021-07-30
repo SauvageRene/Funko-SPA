@@ -32,6 +32,7 @@ class Funko {
             <h4>${this.name}</h4>
             <img src="${this.image}"/>
             <strong><p>${this.series}</p></strong>
+            <button id="delete">Delete</button>
             <button id="wishlist">Add to Wishlist</button>
         </div>`)
         // return this.element
@@ -47,7 +48,7 @@ class Funko {
         Funko.funkoForm.innerHTML += 
         `<form id="new-funko-form">
             Name:<input type="text" id="name" placeholder="Name">
-            Image: <input img src= id="image" placeholder="URL">
+            Image: <input type="text" id="image" placeholder="URL">
             Series: <input type="text" id="series" placeholder="Series">
             <input type="submit" id="create">
         </form>`
@@ -61,11 +62,11 @@ class Funko {
             wishlist: false,
             collection_id: 1 
         }
-        debugger
         const configFunko = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
             },
             body: JSON.stringify(funko)
         }

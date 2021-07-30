@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 Funko.funkoForm.addEventListener('submit', handleSubmit)
 
 function handleSubmit(){
-    event.preventDefault()
-    Funko.createFunko()
-    event.target.reset()
+    event.preventDefault();
+    Funko.createFunko();
+    event.target.reset();
 }
 
 // Global Variables

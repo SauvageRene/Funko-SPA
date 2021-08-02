@@ -4,17 +4,28 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     Collection.getCollection()
-    Funko.getFunkos()
-    Funko.renderForm()
-
+    Funko.getFunkos();
+    Funko.renderForm();
  })
 Funko.funkoForm.addEventListener('submit', handleSubmit)
+Funko.funkoContainer.addEventListener('click', listenDelete)
 
-function handleSubmit(){
+function handleSubmit(event){
     event.preventDefault();
     Funko.createFunko();
     event.target.reset();
 }
+
+function listenDelete(){
+    // e.preventDefault();
+    Funko.handleDelete();
+}
+
+// function handleDelete(e){
+//     if (e.target.innerText === 'Delete'){
+
+//     }
+// }
 
 // Global Variables
 

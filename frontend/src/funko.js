@@ -4,11 +4,12 @@ class Funko {
     static funkoContainer = document.getElementById('funkos-container');
     static funkoForm = document.querySelector('#form-container')
 
-    constructor({name, image, series, wishlist}){
+    constructor({name, image, series, wishlist, id}){
         this.name = name
         this.image = image
         this.series = series
-        this.wishlist = wishlist 
+        this.wishlist = wishlist
+        this.id = id
         
         Funko.all.push(this)
     }
@@ -27,10 +28,11 @@ class Funko {
         // this.element.innerHTML 
         return(`
         <div>
+
             <h4><em>${this.name}</em></h4>
             <img src="${this.image}"/>
             <strong><p>${this.series}</p></strong>
-            <button id="delete">Delete</button>
+            <button data-id="${this.id}" id='delete'>Delete</button>
             <button id="wishlist">Add to Wishlist</button>
         </div>`)
         // return this.element
@@ -38,7 +40,8 @@ class Funko {
     // append our element to the contact-container
 
     renderToDom(){
-        Funko.funkoContainer.innerHTML += this.funkoHTML() 
+        Funko.funkoContainer.innerHTML += this.funkoHTML();
+
     }
 
     // Creating new funkos
@@ -76,4 +79,16 @@ class Funko {
         })
 
     }
+
+    // static listenDelete() {
+    //     Funko.funkoContainer.addEventListener("click", handleDelete())
+    // }
+
+    static handleDelete(e, id) {
+        if (e.target.data.number === `id`){
+        console.log("Delete something")
+    } else {
+        console.log("not hitting")
+    }
+}
 };

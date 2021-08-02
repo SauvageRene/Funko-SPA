@@ -13,6 +13,7 @@ They can add or delete funkos as they wish.
     in the backend/funko-api folder. Rails S does not work unless you are in that folder. 
 
 ## Java-Frontend
-    We use fetch in certain javascript methods to get the funkos from the backend and also the collection. We then use event listeners to render these objects to the Index.html
+    We use fetch in certain javascript methods to get the funkos from the 
+    backend and also the collection. We then use event listeners to render 
+    these objects to the Index.html
 
-    

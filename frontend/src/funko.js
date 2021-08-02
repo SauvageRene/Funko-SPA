@@ -75,7 +75,7 @@ class Funko {
         .then(resp => resp.json())
         .then(funko => {
             const f = new Funko(funko)
-            console.log(f)
+            // console.log(f)
             f.renderToDom()
         })
 

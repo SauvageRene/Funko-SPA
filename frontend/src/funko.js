@@ -85,6 +85,7 @@ class Funko {
     // }
 
     static handleDelete(event){
+    const parent = event.target.parentNode
     const funkoid = event.target.dataset.id
     if (event.target.dataset.action === 'delete' ){
         fetch(`http://localhost:3000/api/collections/1/funkos/${funkoid}`, {
@@ -93,7 +94,7 @@ class Funko {
         .then(resp =>  resp.json())
         .then(data => {
             if(data.message ==="Successfully deleted"){
-                
+                parent.remove();
             }else {
                 alert(data.message)
             }

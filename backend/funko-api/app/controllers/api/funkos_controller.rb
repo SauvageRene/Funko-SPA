@@ -35,7 +35,11 @@ class Api::FunkosController < ApplicationController
 
   # DELETE /funkos/1
   def destroy
-    @funko.destroy
+    if @funko.destroy
+      render json:{message: "Successfully deleted"}
+    else
+      render json:{message: "Failed to delete"}
+    end
   end
 
   private

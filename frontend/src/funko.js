@@ -85,11 +85,20 @@ class Funko {
     // }
 
     static handleDelete(event){
-    const id = event.target.dataset.id;
+    const funkoid = event.target.dataset.id
     if (event.target.dataset.action === 'delete' ){
-        fetch(`http://localhost:3000/api/collections/1/funkos/${id}`), {
+        fetch(`http://localhost:3000/api/collections/1/funkos/${funkoid}`, {
             method: "DELETE"
-        }
+        })
+        .then(resp =>  resp.json())
+        .then(data => {
+            if(data.message ==="Successfully deleted"){
+                
+            }else {
+                alert(data.message)
+            }
+        })
+        .catch(err => console.error(err))
     }
 }
 };

@@ -12,7 +12,7 @@ Funko.funkoContainer.addEventListener('click', listenDelete)
 
 function handleSubmit(event){
     event.preventDefault();
-    Funko.createFunko();
+    Funko.createFunko(event);
     event.target.reset();
 }
 

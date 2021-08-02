@@ -37,7 +37,7 @@ class Funko {
         </div>`)
         // return this.element
     }
-    // append our element to the contact-container
+    // append our element to the -container
 
     renderToDom(){
         Funko.funkoContainer.innerHTML += this.funkoHTML();
@@ -75,6 +75,7 @@ class Funko {
         .then(resp => resp.json())
         .then(funko => {
             const f = new Funko(funko)
+            console.log(f)
             f.renderToDom()
         })
 

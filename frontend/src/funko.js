@@ -29,10 +29,10 @@ class Funko {
         return(`
         <div>
 
-            <h4><em>${this.name}</em></h4>
-            <img src="${this.image}"/>
-            <strong><p>${this.series}</p></strong>
-            <button data-id="${this.id}" id='delete'>Delete</button>
+            <h3><em>${this.name}</em></h3>
+            <img src="${this.image}" alt="Funko Image"/>
+            <p><strong>${this.series}</strong></p>
+            <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
             <button id="wishlist">Add to Wishlist</button>
         </div>`)
         // return this.element
@@ -84,11 +84,12 @@ class Funko {
     //     Funko.funkoContainer.addEventListener("click", handleDelete())
     // }
 
-    static handleDelete(e, id) {
-        if (e.target.data.number === `id`){
-        console.log("Delete something")
-    } else {
-        console.log("not hitting")
+    static handleDelete(event){
+    const id = event.target.dataset.id;
+    if (event.target.dataset.action === 'delete' ){
+        fetch(`http://localhost:3000/api/collections/1/funkos/${id}`), {
+            method: "DELETE"
+        }
     }
 }
 };

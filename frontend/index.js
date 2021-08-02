@@ -16,9 +16,9 @@ function handleSubmit(event){
     event.target.reset();
 }
 
-function listenDelete(){
-    // e.preventDefault();
-    Funko.handleDelete();
+function listenDelete(e){
+    e.preventDefault();
+    Funko.handleDelete(e);
 }
 
 // function handleDelete(e){

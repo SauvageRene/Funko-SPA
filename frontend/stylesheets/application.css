@@ -12,7 +12,8 @@ body {
 }
 
 .container {
-    background-color: rgb(116, 103, 201);
+    font-size: 1.2em;
+    font-style: italic;
     max-width: 1600;
     padding: 50px 20px;
     margin: 0 auto;

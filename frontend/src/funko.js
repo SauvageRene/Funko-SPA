@@ -33,11 +33,10 @@ class Funko {
             <img src="${this.image}" alt="Funko Image"/>
             <p><strong>${this.series}</strong></p>
             <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
-            <button id="wishlist">Add to Wishlist</button>
         </div>`)
         // return this.element
     }
-    // append our element to the -container
+    // append our element to the funko-container
 
     renderToDom(){
         Funko.funkoContainer.innerHTML += this.funkoHTML();

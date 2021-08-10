@@ -2,8 +2,9 @@
 
 class Collection{
     static all = [];
-    constructor({name}){
+    constructor({name, id}){
         this.name = name
+        this.id = id
         Collection.all.push(this)
     }
 

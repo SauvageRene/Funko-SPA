@@ -14,14 +14,18 @@ class Collection{
         .then(resp => resp.json()) 
         .then(data =>  Collection.renderCollection(data))
     }
-    
+    // create a store
+    // Populate input with name of store 
      
     static renderCollection(data){
         const titleName = document.querySelector("#intro")
         data.forEach(collectionName => {
-            const h1 = document.createElement("h1")
-            h1.innerHTML = collectionName.name
-            titleName.append(h1)
+            const bttn = document.createElement("button")
+            bttn.innerHTML = `${collectionName.name}`
+            bttn.dataset.id = `${collectionName.id}`
+            titleName.append(bttn)
+            bttn.addEventListener('click', (e)=>
+            console.log(bttn))
         });
     }
     }

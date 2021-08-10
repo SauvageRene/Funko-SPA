@@ -5,7 +5,7 @@ class Api::CollectionsController < ApplicationController
   def index
     collections = Collection.all
 
-    render json: collections, only:[:name, :funkos], include:{funkos:{except:[:created_at, :updated_at]}}
+    render json: collections, only:[:name, :funkos, :id], include:{funkos:{except:[:created_at, :updated_at]}}
   end
 
   # GET /collections/1

@@ -19,7 +19,7 @@ class Funko {
         .then(resp => resp.json())
         .then(funkos => {
             funkos.forEach(funko => {
-            const funkoName = new Funko(funko)
+            const funkoName = new Funko(funko) 
             funkoName.renderToDom()
         })})
     }
@@ -70,7 +70,7 @@ class Funko {
             },
             body: JSON.stringify(funko)
         }
-        fetch('http://localhost:3000/api/collections/1/funkos', configFunko)
+        fetch('http://localhost:3000/api/collections/1/funkos', configFunko) 
         .then(resp => resp.json())
         .then(funko => {
             const f = new Funko(funko)
@@ -87,6 +87,7 @@ class Funko {
     static handleDelete(event){
     const parent = event.target.parentNode
     const funkoid = event.target.dataset.id
+
     if (event.target.dataset.action === 'delete' ){
         fetch(`http://localhost:3000/api/collections/1/funkos/${funkoid}`, {
             method: "DELETE"
@@ -102,4 +103,5 @@ class Funko {
         .catch(err => console.error(err))
     }
 }
+
 };

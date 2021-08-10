@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Funko.getFunkos();
     Funko.renderForm();
  })
+
 Funko.funkoForm.addEventListener('submit', handleSubmit)
 Funko.funkoContainer.addEventListener('click', listenDelete)
 
@@ -20,6 +21,8 @@ function listenDelete(e){
     e.preventDefault();
     Funko.handleDelete(e);
 }
+
+
 
 // function handleDelete(e){
 //     if (e.target.innerText === 'Delete'){

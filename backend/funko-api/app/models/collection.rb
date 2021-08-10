@@ -1,3 +1,3 @@
 class Collection < ApplicationRecord
-    has_many :funkos 
+    has_many :funkos
 end

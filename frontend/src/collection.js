@@ -10,7 +10,7 @@ class Collection{
     // My Index Route 
     static getCollection(){
         fetch("http://localhost:3000/api/collections")
-        .then(resp => resp.json())
+        .then(resp => resp.json()) 
         .then(data =>  Collection.renderCollection(data))
     }
     
@@ -19,7 +19,6 @@ class Collection{
         const titleName = document.querySelector("#intro")
         data.forEach(collectionName => {
             const h1 = document.createElement("h1")
-            console.log(h1)
             h1.innerHTML = collectionName.name
             titleName.append(h1)
         });

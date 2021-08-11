@@ -32,9 +32,14 @@ class Funko {
 
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
+            <form id="new-comment-form">
+            <h5>Comments</h5>
+            <input id="rate" placeholder="rate condition" type="text"><br>
+            <input id="review" placeholder="comment" type="text">
+            <input data-action="submit" id="comment-submit" value="Submit" type="submit">
+            </form>
             <p><strong>${this.series}</strong></p>
             <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
-            <button data-action="display">Display Comments</button>
         </div>`)
         // return this.element
     }
@@ -86,7 +91,7 @@ class Funko {
     //     Funko.funkoContainer.addEventListener("click", handleDelete())
     // }
 
-    static handleDeleteComment(event){
+    static handleDelete(event){
     const parent = event.target.parentNode
     const funkoid = event.target.dataset.id
 
@@ -105,6 +110,7 @@ class Funko {
         .catch(err => console.error(err))
     }
 }
+
 // create a comment form
     addCommentForm(){
         const commentForm = document.getElementById(`funko-${this.id}`)
@@ -129,6 +135,7 @@ class Funko {
         const input = e.target
         Comment.createComment(input)
     }
+
 // render the comment form
     renderComments(){
         const div = document.getElementById(`funko-${this.id}`)

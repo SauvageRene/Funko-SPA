@@ -1,26 +1,27 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   def index
     @comments = Comment.all
 
-    render json: @comments
+    render json: @comments, except: [:created_at, :updated_at]
   end
 
   # GET /comments/1
-  def show
-    render json: @comment
-  end
+  # def show
+  #   render json: @comment
+  # end
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @funko = Funko.find_by_id(params[:funko_id])
+    @comment = Funko.comment.build(comment_params)
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: @comment
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: @comment.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +36,13 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    @funko = Funko.find_by_id(params[:game_id])
+    @comment = @funko.comments
+    if @comment.destroy
+      render json: {message:"Successfully deleted"}
+    else
+      render json: {message: "Failed to delete"}
+    end
   end
 
   private
@@ -46,6 +53,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.fetch(:comment, {})
+      params.require(:comment).permit(:review, :funko_id)
     end
 end

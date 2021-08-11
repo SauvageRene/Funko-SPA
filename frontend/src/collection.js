@@ -20,13 +20,13 @@ class Collection{
     static renderCollection(data){
         const titleName = document.querySelector("#intro")
         data.forEach(collectionName => {
-            const bttn = document.createElement("button")
-            bttn.innerHTML = `${collectionName.name}`
-            bttn.dataset.id = `${collectionName.id}`
-            bttn.dataset.action = "display"
-            titleName.append(bttn)
-            bttn.addEventListener('click', (e)=>
-            console.log(bttn))
+            const h1 = document.createElement("h1")
+            h1.innerHTML = `${collectionName.name}`
+            h1.dataset.id = `${collectionName.id}`
+            h1.dataset.action = "display"
+            titleName.append(h1)
+            
+            console.log(h1))
         });
     }
     }

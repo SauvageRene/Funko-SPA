@@ -27,7 +27,7 @@ class Funko {
     funkoHTML(){
         // this.element.innerHTML 
         return(`
-        <div>
+        <div id='funko-${this.id}'>
 
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>

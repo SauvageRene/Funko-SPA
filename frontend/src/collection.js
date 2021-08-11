@@ -26,7 +26,7 @@ class Collection{
             h1.dataset.action = "display"
             titleName.append(h1)
             
-            console.log(h1))
+            console.log(h1)
         });
     }
     }

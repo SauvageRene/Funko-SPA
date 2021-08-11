@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_190311) do
+ActiveRecord::Schema.define(version: 2021_08_11_181803) do
 
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "rate"
+    t.string "review"
+    t.integer "funko_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["funko_id"], name: "index_comments_on_funko_id"
   end
 
   create_table "funkos", force: :cascade do |t|
@@ -29,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_07_21_190311) do
     t.index ["collection_id"], name: "index_funkos_on_collection_id"
   end
 
+  add_foreign_key "comments", "funkos"
 end

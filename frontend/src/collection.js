@@ -7,7 +7,7 @@ class Collection{
         this.id = id
         Collection.all.push(this)
     }
-
+    
     // My Index Route 
     static getCollection(){
         fetch("http://localhost:3000/api/collections")
@@ -23,6 +23,7 @@ class Collection{
             const bttn = document.createElement("button")
             bttn.innerHTML = `${collectionName.name}`
             bttn.dataset.id = `${collectionName.id}`
+            bttn.dataset.action = "display"
             titleName.append(bttn)
             bttn.addEventListener('click', (e)=>
             console.log(bttn))

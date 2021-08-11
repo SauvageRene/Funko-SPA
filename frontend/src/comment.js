@@ -1,5 +1,7 @@
 class Comment {
     static all = []
+    static commentContainer = document.getElementById('new-comment-form')
+
     constructor({id, rate, review, funko_id}) {
         this.id = id
         this.rate = rate
@@ -8,6 +10,10 @@ class Comment {
 
         Comment.all.push(this)
     }
+    renderComment(){
+        Comment.commentContainer.innerHTML += this.renderform()
+    }
+
     renderform(){
         return(`<li id=${this.game_id} data-id="comment-${this.id}"><br>
         <h5>${this.rate}</h5>

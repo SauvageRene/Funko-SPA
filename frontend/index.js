@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 Funko.funkoForm.addEventListener('submit', handleSubmit)
 Funko.funkoContainer.addEventListener('click', listenDelete)
 
-
 function handleSubmit(event){
     event.preventDefault();
     Funko.createFunko(event);

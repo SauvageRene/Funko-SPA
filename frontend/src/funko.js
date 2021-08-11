@@ -111,36 +111,11 @@ class Funko {
     }
 }
 
-// create a comment form
-    addCommentForm(){
-        const commentForm = document.getElementById(`funko-${this.id}`)
-        const form = document.createElement('form');
-        console.log(commentForm)
-
-        form.dataset.id = this.id
-        form.id = "form"
-
-        form.innerHTML += `
-            <h5>Comment on this</h5>
-            <input id="rate" placeholder="rate condition" type="text"><br>
-            <input id="review" placeholder="comment" type="text">
-            <input data-action="submit" id="comment-submit" value="Submit" type="submit">
-            `
-        commentForm.append(form)
-        form.addEventListener("submit", this.handleComments)
-        console.log(this.handleComments)
-    }
-    handleComments(e) {
-        e.preventdefault
-        const input = e.target
-        Comment.createComment(input)
-    }
-
-// render the comment form
     renderComments(){
         const div = document.getElementById(`funko-${this.id}`)
-        const ul = document.createElementNS('ul')
+        const ul = document.createElement('ul')
         
         this.comments.forEach(comment = ul.innerHTML += this.comment.renderToDom)
     }
+
 };

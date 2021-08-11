@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Funko.funkoForm.addEventListener('submit', handleSubmit)
 Funko.funkoContainer.addEventListener('click', listenDelete)
+Comment.commentContainer.addEventListener('submit', listenSubmit)
+
 
 function handleSubmit(event){
     event.preventDefault();
@@ -20,6 +22,11 @@ function handleSubmit(event){
 function listenDelete(e){
     e.preventDefault();
     Funko.handleDelete(e);
+}
+function listenSubmit(e){
+    e.preventDefault
+    Comment.createComment(e);
+    e.target.reset();
 }
 
 

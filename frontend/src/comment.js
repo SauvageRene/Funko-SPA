@@ -15,7 +15,7 @@ class Comment {
     }
 
     renderform(){
-        return(`<li id=${this.game_id} data-id="comment-${this.id}"><br>
+        return(`<li id=${this.funko_id} data-id="comment-${this.id}"><br>
         <h5>${this.rate}</h5>
         <p>${this.review}</p>
         <button data-action='delete'>Delete Comment</button>
@@ -27,7 +27,7 @@ class Comment {
             rate: document.getElementById('rate').value,
             review: document.getElementById('review').value
         }
-        const id = document.getElementById("form").dataset.id
+        const id = document.getElementById(`funko-${this.id}`)
         fetch(`http:localhost:3000/collections/1/funkos/${id}/comments`, {
             method: "POST",
             headers: {
@@ -37,8 +37,12 @@ class Comment {
             body: JSON.stringify(comment)
             })
             .then(resp => resp.json)
-            .then(comment =>{
-                console.log(comment)
-            })
+            .then(comments =>{
+                comments.forEach(comment => {
+                    const newComment = new Comment(comment)
+                    newComment.renderComment()
+                })
+                    
+                })
             .catch(err => console.error("error commenting", err))
 }}

@@ -19,7 +19,7 @@ class Api::FunkosController < ApplicationController
     @funko = @collection.funko.build(funko_params)
 
     if @funko.save
-      render json: @funko
+      render json: @funko, status: :created
     else
       render json: @funko.errors, status: :unprocessable_entity
     end

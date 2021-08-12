@@ -1,10 +1,11 @@
-const funkoContainer = document.getElementById('funkos-container')
 
-const formContainer = document.getElementsById('form-container')
+const funkosContainer = document.getElementById('funkos-container')
+
+const formContainer = document.getElementById('form-container')
 
 const createForm = document.createElement('form')
 
-const titleName = document.getElementsByName('intro')
+const titleName = document.getElementById('intro')
 
 
 // Global Listeners 
@@ -13,35 +14,30 @@ const titleName = document.getElementsByName('intro')
 
 document.addEventListener('DOMContentLoaded', () => {
     Collection.getCollection()
-    Funko.getFunkos();
     Funko.renderForm();
     Collection.listenDisplay();
+
+    Funko.eventFunkos()
+
  })
 
-Funko.funkoForm.addEventListener('submit', handleSubmit)
-Funko.funkoContainer.addEventListener('click', listenDelete)
+// formContainer.addEventListener('submit', handleSubmit)
+// funkosContainer.addEventListener('click', listenDelete)
 
 
 
-function handleSubmit(event){
-    event.preventDefault();
-    Funko.createFunko(event);
-    event.target.reset();
-}
-
-function listenDelete(e){
-    e.preventDefault();
-    Funko.handleDelete(e);
-}
-
-
-
-
-// function handleDelete(e){
-//     if (e.target.innerText === 'Delete'){
-
-//     }
+// function handleSubmit(event){
+//     event.preventDefault();
+//     Funko.createFunko(event);
+//     event.target.reset();
 // }
+
+// function listenDelete(e){
+//     e.preventDefault();
+//     Funko.handleDelete(e);
+// }
+
+
 
 // Global Variables
 

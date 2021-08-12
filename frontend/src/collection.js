@@ -17,12 +17,11 @@ class Collection{
         .then(data => 
             {data.forEach(name => {
                 const CollectionName = new Collection(name)
-                CollectionName.renderCollection()
+                CollectionName.addToDom()
             })})
     }
   
-    renderCollection(){
-        const titleName = document.getElementById('intro')
+    addToDom(){
         titleName.innerHTML += this.render()
     }
 
@@ -40,28 +39,28 @@ class Collection{
             Collection.handleDisplay(e)
         })
 
-        }
+    }
+
     static handleDisplay(e){
-    
         
-            const collectionAction = e.target.dataset.action
+        const collectionAction = e.target.dataset.action
             
             const collectionId = e.target.dataset.id
                 
             if(collectionAction === "display"){
                 
-                const s = Collection.all.find(c => c.id == collectionId)
-    
+                const c = Collection.all.find(c => c.id == collectionId)
                     if (funkosContainer){
                         funkosContainer.innerHTML = ""
                         }
     
-                c.renderItems()
+                c.renderFunkos()
     
             }
         }
+
     renderFunkos(){
-        this.funkos.forEach(i => console.log(i.renderCollection()))
+        this.funkos.forEach(c => console.log(c.addToDom()))
     }
     
 }

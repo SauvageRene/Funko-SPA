@@ -1,28 +1,40 @@
 class Funko {
     // remember all objects
     static all = [];
-    static funkoContainer = document.getElementById('funkos-container');
-    static funkoForm = document.querySelector('#form-container')
-
-    constructor({name, image, series, wishlist, id}){
+   
+    constructor({name, image, series, wishlist, id, collection_id}){
+        this.id = id
         this.name = name
         this.image = image
         this.series = series
         this.wishlist = wishlist
-        this.id = id
-        
+        this.collection_id = collection_id
         Funko.all.push(this)
     }
     // Create the inner HTML for the element
-    static getFunkos(){
-        fetch("http://localhost:3000/api/collections/1/funkos")
-        .then(resp => resp.json())
-        .then(funkos => {
-            funkos.forEach(funko => {
-            const funkoName = new Funko(funko) 
-            funkoName.renderToDom()
-        })})
+    // static getFunkos(){
+    //     fetch("http://localhost:3000/api/collections/1/funkos")
+    //     .then(resp => resp.json())
+    //     .then(funkos => {
+    //         funkos.forEach(funko => {
+    //         const funkoName = new Funko(funko) 
+    //         funkoName.renderToDom()
+    //     })})
+    // }
+    static eventFunkos(){
+        createForm.addEventListener("submit", (e)=>{
+
+            e.preventDefault()
+            const form = e.target
+            const name = form.queryselector('#name-input')
+            const image = form.queryselector('#image-input')
+            const series = form.queryselector('#series')
+            const select = form.queryselector('#selectbox')
+            
+            Funko.createFunko(name, image, series, select)
+        })
     }
+
 
     funkoHTML(){
         // this.element.innerHTML 
@@ -31,41 +43,43 @@ class Funko {
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
             <p><strong>${this.series}</strong></p>
-            <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
+            <button data-id="${this.id}" data-action='delete' id='${this.shop_id}'>Delete</button>
         </div>`)
+
         // return this.element
     }
-    // append our element to the funko-container
-    //   // <form id="form">
-            // <h5>Comments</h5>
-            // <input id="rate" placeholder="rate condition" type="text"><br>
-            // <input id="review" placeholder="comment" type="text">
-            // <input data-action="submit" id="comment-submit" value="Submit" type="submit">
-            // </form>
+    
 
     renderToDom(){
-        Funko.funkoContainer.innerHTML += this.funkoHTML();
-
+        funkosContainer.innerHTML += this.funkoHTML();
     }
 
     // Creating new funkos
     static renderForm(){
-        Funko.funkoForm.innerHTML += 
-        `<form id="new-funko-form">
-            Name:<input type="text" id="name" placeholder="Name">
-            Image: <input type="text" id="image" placeholder="URL">
+        createForm.innerHTML += 
+        `<select name"collection" id="selectbox">
+            <option data-id="1">Marvel</option>
+            <option data-id="2">Harry Potter</option>
+            <option data-id="3">Avatar</option>
+        </select>
+
+            Name:<input type="text" id="name-input" placeholder="Name">
+            Image: <input type="text" id="image-input" placeholder="URL">
             Series: <input type="text" id="series" placeholder="Series">
-            <input type="submit" id="create">
-        </form>`
+            <input type="submit" id="create">`
+            formContainer.append(createForm)
     }
 
-    static createFunko(){
+    static createFunko(name, image, series, select){
+        const collectionId = select.options[select.selectedIndex].attributes[0].value
+        console.log(collectionId)
+
         const funko = {
-            name: document.getElementById('name').value,
-            image: document.getElementById('image').value,
-            series: document.getElementById('series').value,
+            name: name.value,
+            image: image.value,
+            series: series.value,
             wishlist: false,
-            collection_id: 1 
+            collection_id: collectionId
         }
         const configFunko = {
             method: 'POST',
@@ -75,7 +89,7 @@ class Funko {
             },
             body: JSON.stringify(funko)
         }
-        fetch('http://localhost:3000/api/collections/1/funkos', configFunko) 
+        fetch(`http://localhost:3000/api/collections/${collectionId}/funkos`, configFunko) 
         .then(resp => resp.json())
         .then(funko => {
             const f = new Funko(funko)

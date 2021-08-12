@@ -4,13 +4,13 @@ class Funko {
     static funkoContainer = document.getElementById('funkos-container');
     static funkoForm = document.querySelector('#form-container')
 
-    constructor({name, image, series, wishlist, id, review}){
+    constructor({name, image, series, wishlist, id, reviews}){
         this.name = name
         this.image = image
         this.series = series
         this.wishlist = wishlist
         this.id = id
-        this.review = review
+        this.reviews = reviews.map(r => new Review(r))
         
         Funko.all.push(this)
     }
@@ -29,21 +29,22 @@ class Funko {
         // this.element.innerHTML 
         return(`
         <div id='funko-${this.id}'>
-
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
-            <form id="form">
-            <h5>Comments</h5>
-            <input id="rate" placeholder="rate condition" type="text"><br>
-            <input id="review" placeholder="comment" type="text">
-            <input data-action="submit" id="comment-submit" value="Submit" type="submit">
-            </form>
             <p><strong>${this.series}</strong></p>
+            <button data-action='add'>Add Review</button>
             <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
+            <div id="review-container></div>
         </div>`)
         // return this.element
     }
     // append our element to the funko-container
+    //   // <form id="form">
+            // <h5>Comments</h5>
+            // <input id="rate" placeholder="rate condition" type="text"><br>
+            // <input id="review" placeholder="comment" type="text">
+            // <input data-action="submit" id="comment-submit" value="Submit" type="submit">
+            // </form>
 
     renderToDom(){
         Funko.funkoContainer.innerHTML += this.funkoHTML();
@@ -112,10 +113,38 @@ class Funko {
 }
 
     renderComments(){
-        const div = document.getElementById(`funko-${this.id}`)
+        const li = document.getElementById(`funko-${this.id}`)
         const ul = document.createElement('ul')
         
-        this.reviews.forEach(comment = ul.innerHTML += this.comment.renderToDom)
+        this.reviews.forEach(r => ul.innerHTML += r.renderToDom())
+        li.append(ul)
+        currentReviews = ul
+    }
+    static handleAction(e){
+       
+        const li = e.target.parentElement
+        const action = e.target.dataset.action
+        switch (action){
+            case "display":
+                if (currentReviews) currentReviews.remove()
+                console.log("Displaying Reviews", li.dataset.id)
+                const g = Funko.all.find(f => f.id == li.dataset.id)
+                f.renderReviews();
+                break;
+
+            case "add":
+                if (currentForm) currentForm.remove()
+                console.log("click on add")
+                const onef = Funko.all.find(f => f.id == li.dataset.id)
+                onef.addReviewForm();
+                
+                break;
+
+            case "delete":
+                console.log("clicked delete")
+                Review.deleteReview(li)
+        }
     }
 
+  
 };

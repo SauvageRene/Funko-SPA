@@ -15,7 +15,8 @@ class Api::FunkosController < ApplicationController
 
   # POST /funkos
   def create
-    @funko = Funko.new(funko_params)
+    @collection = Collection.find_by_id(params[:collection_id])
+    @funko = @collection.funko.build(funko_params)
 
     if @funko.save
       render json: @funko
@@ -50,7 +51,7 @@ class Api::FunkosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def funko_params
-      params.require(:funko).permit(:name, :image, :series, :wishlist, :collection_id)
+      params.require(:funko).permit(:name, :image, :series, :wishlist)
     end
 
 end

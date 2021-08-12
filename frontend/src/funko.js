@@ -4,13 +4,13 @@ class Funko {
     static funkoContainer = document.getElementById('funkos-container');
     static funkoForm = document.querySelector('#form-container')
 
-    constructor({name, image, series, wishlist, id, comment}){
+    constructor({name, image, series, wishlist, id, review}){
         this.name = name
         this.image = image
         this.series = series
         this.wishlist = wishlist
         this.id = id
-        this.comment = comment
+        this.review = review
         
         Funko.all.push(this)
     }
@@ -115,7 +115,7 @@ class Funko {
         const div = document.getElementById(`funko-${this.id}`)
         const ul = document.createElement('ul')
         
-        this.comments.forEach(comment = ul.innerHTML += this.comment.renderToDom)
+        this.reviews.forEach(comment = ul.innerHTML += this.comment.renderToDom)
     }
 
 };

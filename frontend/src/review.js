@@ -1,6 +1,7 @@
-class Comment {
+
+class Review {
     static all = []
-    static commentContainer = document.getElementById('new-comment-form')
+    static commentContainer = document.querySelector('#new-comment-form')
 
     constructor({id, rate, review, funko_id}) {
         this.id = id
@@ -8,10 +9,21 @@ class Comment {
         this.review = review
         this.funko_id = funko_id
 
-        Comment.all.push(this)
+        Review.all.push(this)
     }
+
+    static getComments(){
+        fetch("http://localhost:3000/api/collections/1/funkos")
+        .then(resp => resp.json())
+        .then(comments => {
+            comments.forEach(comment => {
+            const c = new Review(comment) 
+            c.renderComment()
+        })})
+    }
+    
     renderComment(){
-        Comment.commentContainer.innerHTML += this.renderform()
+        Review.commentContainer.innerHTML += this.renderform()
     }
 
     renderform(){
@@ -28,7 +40,7 @@ class Comment {
             review: document.getElementById('review').value
         }
         const id = document.getElementById(`funko-${this.id}`)
-        fetch(`http:localhost:3000/collections/1/funkos/${id}/comments`, {
+        fetch(`http:localhost:3000/collections/1/funkos/${id}/reviews`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -39,10 +51,12 @@ class Comment {
             .then(resp => resp.json)
             .then(comments =>{
                 comments.forEach(comment => {
-                    const newComment = new Comment(comment)
+                    const newComment = new Review(comment)
                     newComment.renderComment()
                 })
                     
                 })
             .catch(err => console.error("error commenting", err))
-}}
+    }
+    
+}

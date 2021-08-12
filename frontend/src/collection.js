@@ -29,4 +29,4 @@ class Collection{
             console.log(h1)
         });
     }
-    }
+}

@@ -5,7 +5,7 @@ class Api::FunkosController < ApplicationController
   def index
     funkos = Funko.all
 
-    render json: funkos, only:[:name, :id, :series, :image, :wishlist, :review], include:{reviews:{except:[:created_at, :updated_at]}}
+    render json: funkos 
   end
 
   # GET /funkos/1

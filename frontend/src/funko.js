@@ -78,7 +78,6 @@ class Funko {
             name: name.value,
             image: image.value,
             series: series.value,
-            wishlist: false,
             collection_id: collectionId
         }
         const configFunko = {

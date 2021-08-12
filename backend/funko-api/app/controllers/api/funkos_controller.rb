@@ -51,7 +51,7 @@ class Api::FunkosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def funko_params
-      params.require(:funko).permit(:name, :image, :series, :wishlist)
+      params.require(:funko).permit(:name, :image, :series)
     end
 
 end

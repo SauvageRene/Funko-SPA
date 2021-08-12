@@ -4,13 +4,12 @@ class Funko {
     static funkoContainer = document.getElementById('funkos-container');
     static funkoForm = document.querySelector('#form-container')
 
-    constructor({name, image, series, wishlist, id, reviews}){
+    constructor({name, image, series, wishlist, id}){
         this.name = name
         this.image = image
         this.series = series
         this.wishlist = wishlist
         this.id = id
-        this.reviews = reviews.map(r => new Review(r))
         
         Funko.all.push(this)
     }
@@ -32,9 +31,7 @@ class Funko {
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
             <p><strong>${this.series}</strong></p>
-            <button data-action='add'>Add Review</button>
             <button data-id="${this.id}" data-action='delete' id='destroy'>Delete</button>
-            <div id="review-container></div>
         </div>`)
         // return this.element
     }

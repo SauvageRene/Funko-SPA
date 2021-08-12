@@ -1,3 +1,12 @@
+const funkoContainer = document.getElementById('funkos-container')
+
+const formContainer = document.getElementsById('form-container')
+
+const createForm = document.createElement('form')
+
+const titleName = document.getElementsByName('intro')
+
+
 // Global Listeners 
 
 
@@ -6,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Collection.getCollection()
     Funko.getFunkos();
     Funko.renderForm();
+    Collection.listenDisplay();
  })
 
 Funko.funkoForm.addEventListener('submit', handleSubmit)

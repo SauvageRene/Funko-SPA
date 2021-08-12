@@ -29,7 +29,7 @@ class Collection{
         return `
         <div class="collection-name">
             <h2>${this.name}</h2>
-            <button data-id =${this.id} data-action="display"> Show Collection</button>
+            <button class="destroy" data-id =${this.id} data-action="display" id="display"> Show Collection</button>
             </div>
             `   
     }
@@ -38,7 +38,6 @@ class Collection{
             e.preventDefault()
             Collection.handleDisplay(e)
         })
-
     }
 
     static handleDisplay(e){

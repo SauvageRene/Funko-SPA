@@ -43,7 +43,7 @@ class Funko {
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
             <p><strong>${this.series}</strong></p>
-            <button data-id="${this.id}" data-action='delete' id='${this.shop_id}'>Delete</button>
+            <button class="delete" data-id="${this.id}" data-action='delete' id='${this.shop_id}'>Delete</button>
         </div>`)
 
         // return this.element

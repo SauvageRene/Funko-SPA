@@ -26,10 +26,10 @@ class Funko {
 
             e.preventDefault()
             const form = e.target
-            const name = form.queryselector('#name-input')
-            const image = form.queryselector('#image-input')
-            const series = form.queryselector('#series')
-            const select = form.queryselector('#selectbox')
+            const name = form.querySelector('#name-input')
+            const image = form.querySelector('#image-input')
+            const series = form.querySelector('#series')
+            const select = form.querySelector('#selectbox')
             
             Funko.createFunko(name, image, series, select)
         })
@@ -50,7 +50,7 @@ class Funko {
     }
     
 
-    renderToDom(){
+    addToDom(){
         funkosContainer.innerHTML += this.funkoHTML();
     }
 
@@ -94,21 +94,28 @@ class Funko {
         .then(funko => {
             const f = new Funko(funko)
             // console.log(f)
-            f.renderToDom()
+            f.addToDom()
         })
 
     }
 
-    // static listenDelete() {
-    //     Funko.funkoContainer.addEventListener("click", handleDelete())
-    // }
+    static listenDelete() {
+        funkosContainer.addEventListener("click", (e) =>{
+            e.preventDefault()
+            Funko.handleDelete();
+        })
+    }
+
 
     static handleDelete(event){
     const parent = event.target.parentNode
+
     const funkoid = event.target.dataset.id
 
+    const collectionId = event.target.id
+
     if (event.target.dataset.action === 'delete' ){
-        fetch(`http://localhost:3000/api/collections/1/funkos/${funkoid}`, {
+        fetch(`http://localhost:3000/api/collections/${collectionId}/funkos/${funkoid}`, {
             method: "DELETE"
         })
         .then(resp =>  resp.json())

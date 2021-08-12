@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Collection.listenDisplay();
 
     Funko.eventFunkos()
-
+    Funko.listenDelete();
  })
 
 // formContainer.addEventListener('submit', handleSubmit)

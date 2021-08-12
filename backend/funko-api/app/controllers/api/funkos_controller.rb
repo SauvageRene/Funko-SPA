@@ -16,7 +16,7 @@ class Api::FunkosController < ApplicationController
   # POST /funkos
   def create
     @collection = Collection.find_by_id(params[:collection_id])
-    @funko = @collection.funko.build(funko_params)
+    @funko = @collection.funkos.build(funko_params)
 
     if @funko.save
       render json: @funko, status: :created

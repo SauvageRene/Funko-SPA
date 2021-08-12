@@ -102,7 +102,7 @@ class Funko {
     static listenDelete() {
         funkosContainer.addEventListener("click", (e) =>{
             e.preventDefault()
-            Funko.handleDelete();
+            Funko.handleDelete(e);
         })
     }
 

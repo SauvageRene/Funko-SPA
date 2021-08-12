@@ -32,7 +32,7 @@ class Funko {
 
             <h3><em>${this.name}</em></h3>
             <img src="${this.image}" alt="Funko Image"/>
-            <form id="new-comment-form">
+            <form id="form">
             <h5>Comments</h5>
             <input id="rate" placeholder="rate condition" type="text"><br>
             <input id="review" placeholder="comment" type="text">

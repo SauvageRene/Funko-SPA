@@ -1,7 +1,7 @@
 
 class Review {
     static all = []
-    static commentContainer = document.querySelector('#new-comment-form')
+    static commentContainer = document.getElementById('new-comment-form')
 
     constructor({id, rate, review, funko_id}) {
         this.id = id
@@ -12,20 +12,17 @@ class Review {
         Review.all.push(this)
     }
 
+
     static getComments(){
         fetch("http://localhost:3000/api/collections/1/funkos")
         .then(resp => resp.json())
-        .then(comments => {
-            comments.forEach(comment => {
-            const c = new Review(comment) 
-            c.renderComment()
-        })})
+        .then(funkos => {
+            console.log(funkos.forEach(funko => (funko.review)))
+        })
     }
     
-    renderComment(){
-        Review.commentContainer.innerHTML += this.renderform()
-    }
-
+    
+    
     renderform(){
         return(`<li id=${this.funko_id} data-id="comment-${this.id}"><br>
         <h5>${this.rate}</h5>
@@ -34,12 +31,12 @@ class Review {
         </li>`)
     }
 
-    static createComment(){
+    static createComment(e) {
+        const id = e.target.dataset.id
         const comment = {
             rate: document.getElementById('rate').value,
             review: document.getElementById('review').value
         }
-        const id = document.getElementById(`funko-${this.id}`)
         fetch(`http:localhost:3000/collections/1/funkos/${id}/reviews`, {
             method: "POST",
             headers: {

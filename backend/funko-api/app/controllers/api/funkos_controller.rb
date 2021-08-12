@@ -3,9 +3,9 @@ class Api::FunkosController < ApplicationController
 
   # GET /funkos
   def index
-    @funkos = Funko.all
+    funkos = Funko.all
 
-    render json: @funkos
+    render json: funkos, only:[:name, :id, :series, :image, :wishlist, :review], include:{reviews:{except:[:created_at, :updated_at]}}
   end
 
   # GET /funkos/1
@@ -52,4 +52,5 @@ class Api::FunkosController < ApplicationController
     def funko_params
       params.require(:funko).permit(:name, :image, :series, :wishlist, :collection_id)
     end
+
 end

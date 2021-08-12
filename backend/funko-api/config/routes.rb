@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do 
   resources :collections do 
     resources :funkos do 
-      resources :comments
+      resources :reviews
       end
     end
   end

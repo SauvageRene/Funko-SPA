@@ -19,4 +19,5 @@ collection.funkos.build(name:'Ron Weasley #121', image:'https://i.ibb.co/7Jqt8MV
 
 collection.funkos.build(name:'Blue Spirit #1002', image:'https://i.ibb.co/R0ZQRML/blue-Spiritfunko-1.jpg', series:'Avatar', wishlist:"false")
 
+
 collection.save

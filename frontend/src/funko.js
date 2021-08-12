@@ -112,39 +112,6 @@ class Funko {
     }
 }
 
-    renderComments(){
-        const li = document.getElementById(`funko-${this.id}`)
-        const ul = document.createElement('ul')
-        
-        this.reviews.forEach(r => ul.innerHTML += r.renderToDom())
-        li.append(ul)
-        currentReviews = ul
-    }
-    static handleAction(e){
-       
-        const li = e.target.parentElement
-        const action = e.target.dataset.action
-        switch (action){
-            case "display":
-                if (currentReviews) currentReviews.remove()
-                console.log("Displaying Reviews", li.dataset.id)
-                const g = Funko.all.find(f => f.id == li.dataset.id)
-                f.renderReviews();
-                break;
-
-            case "add":
-                if (currentForm) currentForm.remove()
-                console.log("click on add")
-                const onef = Funko.all.find(f => f.id == li.dataset.id)
-                onef.addReviewForm();
-                
-                break;
-
-            case "delete":
-                console.log("clicked delete")
-                Review.deleteReview(li)
-        }
-    }
 
   
 };

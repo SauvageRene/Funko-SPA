@@ -39,8 +39,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Global Variables
-
-// Any Initializations of the application 
-
  

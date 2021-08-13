@@ -1,26 +1,17 @@
 class Funko {
-    // remember all objects
+
     static all = [];
    
-    constructor({name, image, series, wishlist, id, collection_id}){
+    constructor({name, image, series, id, collection_id}){
         this.id = id
         this.name = name
         this.image = image
         this.series = series
-        this.wishlist = wishlist
         this.collection_id = collection_id
         Funko.all.push(this)
     }
-    // Create the inner HTML for the element
-    // static getFunkos(){
-    //     fetch("http://localhost:3000/api/collections/1/funkos")
-    //     .then(resp => resp.json())
-    //     .then(funkos => {
-    //         funkos.forEach(funko => {
-    //         const funkoName = new Funko(funko) 
-    //         funkoName.renderToDom()
-    //     })})
-    // }
+
+   
     static eventFunkos(){
         createForm.addEventListener("submit", (e)=>{
 
@@ -46,7 +37,7 @@ class Funko {
             <button class="delete" data-id="${this.id}" data-action='delete' id='${this.shop_id}'>Delete</button>
         </div>`)
 
-        // return this.element
+        
     }
     
 
@@ -128,7 +119,5 @@ class Funko {
         .catch(err => console.error(err))
     }
 }
-
-
   
-};
+}

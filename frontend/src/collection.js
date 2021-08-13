@@ -6,14 +6,14 @@ class Collection{
     constructor({name, id, funkos}){
         this.name = name
         this.id = id
-        this.funkos = funkos.map(f => new Funko(f))
+        this.funkos = funkos.map(f => new Funko(f)) 
         Collection.all.push(this)
     }
     
     // My Index Route 
     static getCollection(){
         fetch("http://localhost:3000/api/collections")
-        .then(resp => resp.json()) 
+        .then(resp => resp.json())
         .then(data => 
             {data.forEach(name => {
                 const CollectionName = new Collection(name)
@@ -59,7 +59,7 @@ class Collection{
         }
 
     renderFunkos(){
-        this.funkos.forEach(c => console.log(c.addToDom()))
+        this.funkos.forEach(c => c.addToDom())
     }
     
 }

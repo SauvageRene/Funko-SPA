@@ -3,6 +3,7 @@
 class Collection{
     static all = [];
 
+
     constructor({name, id, funkos}){
         this.name = name
         this.id = id
@@ -22,7 +23,7 @@ class Collection{
     }
   
     addToDom(){
-        titleName.innerHTML += this.render()
+        collectionName.innerHTML += this.render()
     }
 
     render(){
@@ -34,7 +35,7 @@ class Collection{
             `   
     }
     static listenDisplay(){
-        titleName.addEventListener("click", (e)=>{
+        collectionName.addEventListener("click", (e)=>{
             e.preventDefault()
             Collection.handleDisplay(e)
         })
@@ -43,8 +44,9 @@ class Collection{
     static handleDisplay(e){
         
         const collectionAction = e.target.dataset.action
-            
+
             const collectionId = e.target.dataset.id
+            
                 
             if(collectionAction === "display"){
                 

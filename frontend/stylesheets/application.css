@@ -41,7 +41,7 @@ body {
 #display {
     background-color: cyan;
 }
-#intro {
+#collections-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 30px;

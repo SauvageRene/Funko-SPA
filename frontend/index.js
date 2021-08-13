@@ -5,7 +5,7 @@ const formContainer = document.getElementById('form-container')
 
 const createForm = document.createElement('form')
 
-const titleName = document.getElementById('intro')
+const collectionName = document.getElementById('collections-container')
 
 
 // Global Listeners 

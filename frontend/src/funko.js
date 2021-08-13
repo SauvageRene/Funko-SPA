@@ -117,7 +117,6 @@ class Funko {
             }
         })
         .catch(err => console.error(err))
+        }
     }
-}
-  
 }
